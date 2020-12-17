@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
         const gamePage = document.querySelector("#game")
         console.log("game page found!", gamePage)
-        gamePage.style.display ="block"
+        gamePage.style.display ="block" 
     })
 })
+
+/// Todo:
+// Make show/hide functions(selector)
+// add a UTIL.js module for util functions
