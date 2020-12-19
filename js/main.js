@@ -1,16 +1,9 @@
-document.addEventListener("DOMContentLoaded", ()=>{
-    const startButton = document.querySelector(".start-button");
-    startButton.addEventListener("click", ()=>{
-        const startPage = document.querySelector("#start-page");
-        console.log("start page found!", startPage)
-        startPage.style.display = "none"
+import{show,hide} from "./util"
 
-        const gamePage = document.querySelector("#game")
-        console.log("game page found!", gamePage)
-        gamePage.style.display ="block" 
+document.addEventListener("DOMContentLoaded", ()=>{
+    const startButton = document.querySelector(".start-button")
+    startButton.addEventListener("click", ()=>{
+        hide("#start-page")
+        show("#game")
     })
 })
-
-/// Todo:
-// Make show/hide functions(selector)
-// add a UTIL.js module for util functions
