@@ -1,10 +1,9 @@
-export function show(selector){
-    const selectedElement=document.querySelector(selector)
-    selectedElement.style.display = ""
+export const find = document.querySelector.bind(document)
+
+export const show = (selector) => {
+    find(selector).style.display = ""
 }
 
-export function hide(selector){
-    const selectedElement=document.querySelector(selector)
-    selectedElement.style.display = "none"
+export const hide = (selector) => {
+    find(selector).style.display = "none"
 }
-
