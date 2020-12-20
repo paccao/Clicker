@@ -17,15 +17,21 @@
             beyond what we know as "human", made possible through genetic manipulation and other biointerventionist
             measures and lived underground for decades. The few people who survived now has to rebuild the once lush and
             beautiful planet that once was.
-
         </p>
-        <button class="start-button">BEGIN</button>
-
+        <form>
+            <label for="player-name">Enter your name:</label>
+            <input type="text" id="player-name" name="player-name" minlength="1" maxlength="20" autofocus>
+            <button class="start-button">BEGIN</button>
+        </form>
+    
     </div>
 
-    <div id ="game" style = "display:none">
-        <h1>Game</h1>
-    </div>
+    <main id="game" style="display:none">
+         <div id="day-page">
+             
+         </div>
+    </main>
+
 
     <script type="module" src="./js/main.js"></script>
 </body>

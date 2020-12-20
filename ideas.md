@@ -22,6 +22,7 @@ The earth was in bad shape, your mission is to replant the earth
     -   How many trees you begin with
 
 -   Tutorial (info boxes with small text?)
+-   on show game, 'alert' player with a box element that fades out and says `welcome ${playerName}`
 
 ## Todo
 
@@ -44,8 +45,8 @@ The earth was in bad shape, your mission is to replant the earth
 
 ### Game loop:
 
--   Show start page, enter your name to begin
--   Show game
+-   ✅ Show start page, enter your name to begin
+-   ✅ Show game container
     -   Show day 1/30, Morning
 -   the game is 30 days long
 -   each day consists of 3 stages
@@ -70,3 +71,5 @@ The earth was in bad shape, your mission is to replant the earth
     -   Restart game
 
 ## Bugs
+
+-   Sanitize input (its vulnerable to XSS attacks, crossitescripting)
