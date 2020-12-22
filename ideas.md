@@ -7,6 +7,10 @@ Onclick plant tree
 Post apocalyptic: Survival Horror
 The earth was in bad shape, your mission is to replant the earth
 
+### Theme ideas
+
+Humans have developed a tool called replicators which use biomass to make stuff.
+
 ## Future ideas
 
 -   Multiplayer
@@ -26,6 +30,7 @@ The earth was in bad shape, your mission is to replant the earth
 
 -   highscore page
     -   Show a timeline of every decision the player made during the game
+        -   you planted x amount of trees, y amount of trees died, z[] was your timeline for this game session
 
 ## Todo
 
@@ -53,6 +58,7 @@ The earth was in bad shape, your mission is to replant the earth
     -   Show day 1/30, Morning
 -   the game is 30 days long
 -   each day consists of 3 stages
+-   The player has a currency called biomass, which they can get by cutting down trees (in the afternoon phase) and then decomposing them into biomass, the biomass is used in every replicator
     1. Morning (productivity)
         - roll dice/ spin wheel for productivity seconds
         - User gets to choose when to start clicking

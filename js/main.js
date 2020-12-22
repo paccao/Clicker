@@ -1,9 +1,17 @@
 import { show, hide, find } from "./util.js"
+import { getRandomActions, applyAction } from "./action.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const gameState = {
         player: {
-            name: ""
+            name: "",
+            
+        },
+        world: {
+            health: 2,
+            trees: 100,
+            deathRate: 0.7,
+            bioMass: 0
         }
     }
     
