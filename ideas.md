@@ -24,6 +24,9 @@ The earth was in bad shape, your mission is to replant the earth
 -   Tutorial (info boxes with small text?)
 -   on show game, 'alert' player with a box element that fades out and says `welcome ${playerName}`
 
+-   highscore page
+    -   Show a timeline of every decision the player made during the game
+
 ## Todo
 
 ### On click:

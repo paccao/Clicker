@@ -1,4 +1,4 @@
-import { show, hide, find } from "./util"
+import { show, hide, find } from "./util.js"
 
 document.addEventListener("DOMContentLoaded", () => {
     const gameState = {
