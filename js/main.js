@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const gameState = {
         player: {
             name: "",
-            
         },
         world: {
             health: 2,
@@ -27,14 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
         gameState.player.name = name
     })
 
-    // show("#day-page")
+    function showAfternoon(actions = []) {
+        find("#afternoon-div").innerHTML = actions.map(({title}) => `
+            <span>${title}</span>
+        `).join("")
+    }
+    showAfternoon(getRandomActions(2))
 })
-
-// init game UI
-
-// get initial game state
-
-// show next day()
-    // show morning()
-    // show afternoon()
-    // show evening()
