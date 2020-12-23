@@ -25,6 +25,13 @@ Humans have developed a tool called replicators which use biomass to make stuff.
     -   biosphere health impact on each round
     -   How many trees you begin with
 
+-   Morning interactive ideas
+
+    -   interactive minigames (each day has different tasks to save the planet)
+        -   Osu
+        -   pick up seeds, plant them in a pattern, then minecraft bone meal
+        -
+
 -   Tutorial (info boxes with small text?)
 -   on show game, 'alert' player with a box element that fades out and says `welcome ${playerName}`
 
@@ -50,6 +57,10 @@ Humans have developed a tool called replicators which use biomass to make stuff.
     -   Biosphere health
 
 ## Core game
+
+### Upgrades
+
+-   Player gets a permanent boost to seconds in tree planting phase (consider game balancing)
 
 ### Game loop:
 
