@@ -1,8 +1,8 @@
-import { show, hide, find } from "./util"
+import { show, hide, find } from './util'
 
 /// game loop
 // in gameState, add variable called day, which you write out in day-page span
-// Init UI 
+// Init UI
 // Next day function (update span element in day-number)
 // Morning function
 // Afternoon function
