@@ -1,9 +1,8 @@
 import { show, hide, find } from './util'
 import { getRandomActions } from './action'
-import { showAfternoon, showNextDay } from './ui'
+import { showAfternoon, showNextDay, UI } from './ui'
 
-/// game loop
-// Update day number
+// IDEAS
 // End game function (if you lose)
 // Highscore (maybe add after MVP - minimum viable product)
 // Restart game loop without reloading page (maybe add later)
@@ -30,13 +29,14 @@ export class Game {
             const input = find('#player-name')
             const name = input.value.trim()
 
+            // TODO: sanitize input to prevent XSS
             if (name.length < input.minLength) return false
+
+            showNextDay(this.state.world.day)
 
             hide('#start-page')
             show('#game')
             this.state.player.name = name
         })
-        showAfternoon(getRandomActions(2))
-        showNextDay(this.state.world.day)
     }
 }

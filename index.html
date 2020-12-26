@@ -34,25 +34,25 @@
             </form>
         </div>
 
-        <main id="game" style="display: none">
+        <main id="game" class="hide">
             <div class="day-page">
                 <header>
-                    <h2>Day <span class="day"></span></h2>
+                    <h2>
+                        Day <span class="day"></span> -
+                        <span class="time"></span>
+                    </h2>
                 </header>
-                <section class="morning-page">
-                    <h2>Morning</h2>
+                <section class="morning hide">
                     <p></p>
                     <button class="click-button">Click to plant a tree</button>
                     <!-- <img src="" alt="morning-logo"> -->
                 </section>
-                <section class="afternoon-page">
-                    <h2>Afternoon</h2>
+                <section class="afternoon hide">
                     <p>Take action!</p>
-                    <div id="afternoon-div"></div>
+                    <div id="actions"></div>
                     <!-- <img src="" alt="afternoon-logo"> -->
                 </section>
-                <section class="evening-page">
-                    <h2>Evening</h2>
+                <section class="evening hide">
                     <!-- <img src="" alt="evening-logo"> -->
                 </section>
             </div>
