@@ -8,7 +8,6 @@ import { showAfternoon, showNextDay } from './ui'
 // Highscore (maybe add after MVP - minimum viable product)
 // Restart game loop without reloading page (maybe add later)
 
-
 export class Game {
     constructor() {
         this.state = {

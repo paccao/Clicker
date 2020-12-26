@@ -1,9 +1,9 @@
 export const find = document.querySelector.bind(document)
 
 export const show = (selector) => {
-    find(selector).style.display = ''
+    find(selector).classList.remove('hide')
 }
 
 export const hide = (selector) => {
-    find(selector).style.display = 'none'
+    find(selector).classList.add('hide')
 }

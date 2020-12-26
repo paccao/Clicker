@@ -5,7 +5,14 @@
     "main": "index.js",
     "scripts": {
         "start": "snowpack dev",
-        "build": "snowpack build"
+        "build": "snowpack build",
+        "prettify": "npx prettier --write ."
+    },
+    "devDependencies": {
+        "husky": "^4.3.6",
+        "prettier": "^2.2.1",
+        "pretty-quick": "^3.1.0",
+        "snowpack": "^2.18.4"
     },
     "keywords": [],
     "author": "",
@@ -16,7 +23,9 @@
         "singleQuote": true,
         "trailingComma": "all"
     },
-    "devDependencies": {
-        "snowpack": "^2.18.4"
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
     }
 }

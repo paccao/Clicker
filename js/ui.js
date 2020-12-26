@@ -12,6 +12,8 @@ export function showNextDay(dayNumber = 0) {
     find('.day').innerText = dayNumber
 }
 
+export function showMorning() {}
+
 // Show morning
 
 // Show evening
