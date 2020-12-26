@@ -1,6 +1,6 @@
 import { show, hide, find } from './util'
 import { getRandomActions } from './action'
-import { showAfternoon } from './ui'
+import { showAfternoon, showNextDay } from './ui'
 
 /// game loop
 // Update day number
@@ -38,5 +38,6 @@ export class Game {
             this.state.player.name = name
         })
         showAfternoon(getRandomActions(2))
+        showNextDay(this.state.world.day)
     }
 }

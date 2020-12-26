@@ -8,7 +8,9 @@ export function showAfternoon(actions = []) {
     find('#afternoon-div').innerHTML = actions.map(showAction).join('')
 }
 
-// showNextDay function (update span element in day-number)
+export function showNextDay(dayNumber = 0) {
+    find('.day').innerText = dayNumber
+}
 
 // Show morning
 
