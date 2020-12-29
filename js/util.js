@@ -17,6 +17,15 @@ export const show = (target) => {
 export const hide = (target) => {
     getElement(target).classList.add('hide')
 }
+/**
+ * Return a random item from given array
+ *
+ * @param {any[]} array The array
+ */
+export const getRandomItemFromArray = (array) => {
+    const index = Math.floor(Math.random() * array.length)
+    return array[index]
+}
 
 /**
  * Get a target DOM element

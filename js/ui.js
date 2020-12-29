@@ -4,9 +4,9 @@ export const UI = {
     day: find('.day'),
     time: find('.time'),
     actions: find('#actions'),
-    morning: find('#morning'),
-    afternoon: find('#afternoon'),
-    evening: find('#evening'),
+    morning: find('.morning'),
+    afternoon: find('.afternoon'),
+    evening: find('.evening'),
 }
 
 const showAction = ({ title }) => `
@@ -17,14 +17,24 @@ export function showNextDay(dayNumber = 1) {
     UI.day.innerText = dayNumber
 }
 
-export function showMorning() {
+export function showMorning(dayTimeAmount) {
     UI.time.innerText = 'Morning'
-    hide(UI.evening)
-    show(UI.morning)
+
     // Type out text for the RNG number
     // "Get ready, in 3.. 2.. 1.."
+    find('.morning .step1').innerText =
+        'Click the button to acquire your work schedule for the day'
+
+    find(
+        '.morning .step2',
+    ).innerText = `You got ${dayTimeAmount} seconds to click for the day`
+
+    find('.morning .step3').innerText =
+        'Click the button to begin your day, get ready to click as much as you can!'
 
     // After click"phase" is over, type out something like "time's up"
+    hide(UI.evening)
+    show(UI.morning)
 }
 
 export function showAfternoon(actions = []) {

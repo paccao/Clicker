@@ -1,3 +1,5 @@
+import { getRandomItemFromArray } from './util'
+
 export function applyAction(action, gameState) {
     return gameState
 }
@@ -8,11 +10,6 @@ export const getRandomActions = (count = 2) => {
         result.push(getRandomItemFromArray(actions))
     }
     return result
-}
-
-const getRandomItemFromArray = (array) => {
-    const index = Math.floor(Math.random() * array.length)
-    return array[index]
 }
 
 const action = (title, modifiers) => {

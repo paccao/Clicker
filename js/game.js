@@ -1,6 +1,6 @@
-import { show, hide, find } from './util'
+import { show, hide, find, getRandomItemFromArray } from './util'
 import { getRandomActions } from './action'
-import { showAfternoon, showNextDay, UI } from './ui'
+import { showMorning, showAfternoon, showNextDay, UI } from './ui'
 
 // IDEAS
 // End game function (if you lose)
@@ -19,11 +19,12 @@ export class Game {
                 deathRate: 0.7,
                 bioMass: 0,
                 day: 1,
+                dayTimeAmount: getRandomItemFromArray([3, 6, 9, 12]),
             },
         }
     }
 
-    initUI() {
+    addEventListeners() {
         find('#start-page form').addEventListener('submit', (event) => {
             event.preventDefault()
             const input = find('#player-name')
@@ -32,11 +33,28 @@ export class Game {
             // TODO: sanitize input to prevent XSS
             if (name.length < input.minLength) return false
 
-            showNextDay(this.state.world.day)
-
-            hide('#start-page')
-            show('#game')
             this.state.player.name = name
+
+            this.start()
         })
+
+        find('.RNG-seconds').addEventListener('click', (event) => {
+            hide('.step1')
+            hide('.RNG-seconds')
+            show('.step2')
+            show('.step3')
+            show('.plant-tree')
+        })
+    }
+
+    start() {
+        showNextDay(this.state.world.day)
+        this.morning()
+        hide('#start-page')
+        show('#game')
+    }
+
+    morning() {
+        showMorning(this.state.world.dayTimeAmount)
     }
 }
