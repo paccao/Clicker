@@ -69,10 +69,7 @@ export class Game {
         find('.plant-tree').addEventListener('click', (event) => {
             /**
              * FIRST CLICK:
-             * hide step2 & step3
              * Move day and "morning" UI (with css)
-             * Remove innertext on .plant-tree
-             * window.settimeout(dayTimeAmount)
              */
 
             if (this.state.player.treesPlantedToday === 0) {
@@ -90,6 +87,10 @@ export class Game {
                     )
                     window.clearInterval(interval)
                 }, this.state.world.dayTimeAmount * 1000)
+
+                hide('.step2')
+                hide('.step3')
+                //find('.plant-tree').innerText = ''
             }
 
             // Adds trees on click
