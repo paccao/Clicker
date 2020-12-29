@@ -24,6 +24,8 @@ export class Game {
         this.state = {
             player: {
                 name: '',
+                treesPerClick: 1,
+                treesPlantedToday: 0,
             },
             world: {
                 health: 2,
@@ -57,16 +59,44 @@ export class Game {
             show('.step3')
             show('.plant-tree')
         })
+
+        find('.plant-tree').addEventListener('click', (event) => {
+            /**
+             * FIRST CLICK:
+             * hide step2 & step3
+             * Move day and "morning" UI (with css)
+             * Remove innertext on .plant-tree
+             * window.settimeout(dayTimeAmount)
+             */
+
+            if (this.state.player.treesPlantedToday === 0) {
+                window.setTimeout(() => {
+                    this.afternoon()
+                    console.log(
+                        this.state.world.trees,
+                        this.state.player.treesPlantedToday,
+                    )
+                }, this.state.world.dayTimeAmount * 1000)
+            }
+
+            // Adds trees on click
+            this.state.world.trees += this.state.player.treesPerClick
+            this.state.player.treesPlantedToday += this.state.player.treesPerClick
+        })
     }
 
     start() {
-        showNextDay(this.state.world.day)
         this.morning()
         hide('#start-page')
         show('#game')
     }
 
     morning() {
+        showNextDay(this.state.world.day)
         showMorning(this.state.world.dayTimeAmount)
+    }
+
+    afternoon() {
+        showAfternoon(getRandomActions(2))
     }
 }
