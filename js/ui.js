@@ -49,3 +49,7 @@ export function showEvening() {
     hide(UI.afternoon)
     show(UI.evening)
 }
+
+export function showRemainingTime(time) {
+    find('.time-remaining').innerText = time / 1000
+}

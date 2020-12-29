@@ -1,6 +1,12 @@
 import { show, hide, find, getRandomItemFromArray } from './util'
 import { getRandomActions } from './action'
-import { showMorning, showAfternoon, showNextDay, UI } from './ui'
+import {
+    showMorning,
+    showAfternoon,
+    showNextDay,
+    UI,
+    showRemainingTime,
+} from './ui'
 
 /// Game pseudo code
 /* 
@@ -70,12 +76,19 @@ export class Game {
              */
 
             if (this.state.player.treesPlantedToday === 0) {
+                let timeRemaining = this.state.world.dayTimeAmount * 1000
+                const interval = window.setInterval(() => {
+                    timeRemaining -= 100
+                    showRemainingTime(timeRemaining)
+                }, 100)
+
                 window.setTimeout(() => {
                     this.afternoon()
                     console.log(
                         this.state.world.trees,
                         this.state.player.treesPlantedToday,
                     )
+                    window.clearInterval(interval)
                 }, this.state.world.dayTimeAmount * 1000)
             }
 
