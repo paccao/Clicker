@@ -47,7 +47,7 @@ Humans have developed a tool called replicators which use biomass to make stuff.
 -   track planted trees
 -   update ui, show planted trees
 
-### Todo:game state
+### Todo: game state
 
 -   Game state
     -   Tree planting ability (increase amount of planted trees)
@@ -58,22 +58,22 @@ Humans have developed a tool called replicators which use biomass to make stuff.
 
 ## Core game
 
-### Upgrades
+### Upgrades (consider game balancing)
 
--   Player gets a permanent boost to seconds in tree planting phase (consider game balancing)
+-   Player gets a permanent boost to seconds in tree planting phase
 
 ### Game loop:
 
 -   ✅ Show start page, enter your name to begin
 -   ✅ Show game container
-    -   Show day 1/30, Morning
+    -   ✅ Show day 1/30, Morning
 -   the game is 30 days long
 -   each day consists of 3 stages
 -   The player has a currency called biomass, which they can get by cutting down trees (in the afternoon phase) and then decomposing them into biomass, the biomass is used in every replicator
     1. Morning (productivity)
-        - roll dice/ spin wheel for productivity seconds
-        - User gets to choose when to start clicking
-        - click as much as you can for your designated seconds
+        - ✅roll dice/ spin wheel for productivity seconds
+        - ✅User gets to choose when to start clicking
+        - ✅click as much as you can for your designated seconds
     2. Afternoon (Action)
         - Choose between 2 random upgrades
     3. Evening (Summary of the game state)
