@@ -2,6 +2,18 @@ import { show, hide, find, getRandomItemFromArray } from './util'
 import { getRandomActions } from './action'
 import { showMorning, showAfternoon, showNextDay, UI } from './ui'
 
+/// Game pseudo code
+/* 
+    game.start()
+        Show Morning
+        Show Evening
+        Show Afternoon
+        Show next day(update day number, Show morning)
+            if(day <= 30 || you died)
+    Show endGame
+    Show highscore
+    */
+
 // IDEAS
 // End game function (if you lose)
 // Highscore (maybe add after MVP - minimum viable product)
