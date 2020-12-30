@@ -41,6 +41,7 @@ export class Game {
                 bioMass: 0,
                 day: 1,
                 dayTimeAmount: getRandomItemFromArray([3, 6, 9, 12]),
+                actions: [],
             },
         }
     }
@@ -99,11 +100,25 @@ export class Game {
             this.state.player.treesPlantedToday += this.state.player.treesPerClick
         })
 
-        find('.span1-button').addEventListener('click', (event) => {
-            // apply action
-            // hide afternoon
-            // evening(){ show evening }
+        document.querySelectorAll('#actions button').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                // apply action
+                // hide afternoon
+                // evening(){ show evening }
+
+                // Make sure we use the correct action based on button ID
+                const selectedActionID = btn.dataset.id
+                const selectedAction = this.state.world.actions.find(
+                    (action) => {
+                        if (action.id === Number(selectedActionID)) {
+                            return true
+                        }
+                        return false
+                    },
+                )
+            })
         })
+    }
 
         find('.span2-button').addEventListener('click', (event) => {})
     }
@@ -120,7 +135,7 @@ export class Game {
     }
 
     afternoon() {
-        const actions = getRandomActions(2)
-        showAfternoon(actions)
+        this.state.world.actions = getRandomActions(2)
+        showAfternoon(this.state.world.actions)
     }
 }

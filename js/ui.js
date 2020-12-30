@@ -1,5 +1,4 @@
 import { find, show, hide } from './util'
-import { applyAction } from './action'
 
 export const UI = {
     day: find('.day'),
@@ -10,11 +9,12 @@ export const UI = {
     evening: find('.evening'),
 }
 
-const showAction = ({ title, text, upgradeText, modifiers }, index) => {
+const showAction = ({ id, title, text, upgradeText, modifiers }, index) => {
     find(`.span${index + 1}-title`).innerText = title
     find(`.span${index + 1}-text`).innerText = text
     find(`.span${index + 1}-upgradeText`).innerText = upgradeText
     find(`.span${index + 1}-button`).innerText = 'Select'
+    find(`.span${index + 1}-button`).dataset.id = id
 }
 
 export function showNextDay(dayNumber = 1) {
