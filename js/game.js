@@ -111,6 +111,7 @@ export class Game {
     }
 
     afternoon() {
-        showAfternoon(getRandomActions(2))
+        const actions = getRandomActions(2)
+        showAfternoon(actions)
     }
 }

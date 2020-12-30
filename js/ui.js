@@ -1,4 +1,5 @@
 import { find, show, hide } from './util'
+import { applyAction } from './action'
 
 export const UI = {
     day: find('.day'),
@@ -9,9 +10,11 @@ export const UI = {
     evening: find('.evening'),
 }
 
-const showAction = ({ title }) => `
-    <span>${title}</span>
-`
+const showAction = ({ title, text, modifiers }, index) => {
+    find(`.span${index + 1}-title`).innerText = title
+    find(`.span${index + 1}-text`).innerText = text
+    find(`.span${index + 1}-button`).innerText = 'Select'
+}
 
 export function showNextDay(dayNumber = 1) {
     UI.day.innerText = dayNumber
@@ -38,7 +41,7 @@ export function showMorning(dayTimeAmount) {
 }
 
 export function showAfternoon(actions = []) {
-    UI.actions.innerHTML = actions.map(showAction).join('')
+    actions.forEach(showAction)
     UI.time.innerText = 'Afternoon'
     hide(UI.morning)
     show(UI.afternoon)
