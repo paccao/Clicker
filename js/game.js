@@ -3,6 +3,7 @@ import { getRandomActions } from './action'
 import {
     showMorning,
     showAfternoon,
+    showEvening,
     showNextDay,
     UI,
     showRemainingTime,
@@ -97,6 +98,14 @@ export class Game {
             this.state.world.trees += this.state.player.treesPerClick
             this.state.player.treesPlantedToday += this.state.player.treesPerClick
         })
+
+        find('.span1-button').addEventListener('click', (event) => {
+            // apply action
+            // hide afternoon
+            // evening(){ show evening }
+        })
+
+        find('.span2-button').addEventListener('click', (event) => {})
     }
 
     start() {

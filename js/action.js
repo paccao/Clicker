@@ -13,10 +13,11 @@ export const getRandomActions = (count = 2) => {
     return result
 }
 
-const action = (title, text, modifiers) => {
+const action = (title, text, upgradeText, modifiers) => {
     return {
         title,
         text,
+        upgradeText,
         modifiers,
     }
 }
@@ -24,14 +25,17 @@ const action = (title, text, modifiers) => {
 const actions = [
     action(
         'Make a science lab',
-        'The science lab will help you do further research on the planets soil. Choosing this action will grant you:',
+        "The science lab will help you do further research on the planet's soil. The research helps your trees become more resilient to the corrupt nature of earth.",
+        "Earth's deadly corruption takes less of a toll on your trees each day",
     ),
     action(
         'Bioengineered tree roots',
-        'The ground starts moving, it seems as if the trees roots has become sentient. They know what is best for their survival.',
+        "The ground starts moving, it seems as if the tree's roots has become sentient. They know what is best for their survival.",
+        "Earth's deadly corruption takes less of a toll on your trees each day",
     ),
     action(
         'Tree planting drone',
-        'The excellence of engineering once again shines through. You learn how to construct tree planting drones with your replicator. These will help you plant trees each day.',
+        'The excellence of engineering shines through. You learn how to construct tree planting drones with your replicator. These will help you plant extra trees for you each day.',
+        'You automatically grow trees each day',
     ),
 ]

@@ -10,9 +10,10 @@ export const UI = {
     evening: find('.evening'),
 }
 
-const showAction = ({ title, text, modifiers }, index) => {
+const showAction = ({ title, text, upgradeText, modifiers }, index) => {
     find(`.span${index + 1}-title`).innerText = title
     find(`.span${index + 1}-text`).innerText = text
+    find(`.span${index + 1}-upgradeText`).innerText = upgradeText
     find(`.span${index + 1}-button`).innerText = 'Select'
 }
 
