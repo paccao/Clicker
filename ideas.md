@@ -43,9 +43,9 @@ Humans have developed a tool called replicators which use biomass to make stuff.
 
 ### On click:
 
--   plant tree
--   track planted trees
--   update ui, show planted trees
+-   ✅plant tree
+-   ✅track planted trees
+-   ✅update ui, show planted trees
 
 ### Todo: game state
 
