@@ -84,8 +84,9 @@ export class Game {
                 window.setTimeout(() => {
                     this.afternoon()
                     console.log(
-                        this.state.world.trees,
-                        this.state.player.treesPlantedToday,
+                        'total amount of trees: ' + this.state.world.trees,
+                        'trees planted today : ' +
+                            this.state.player.treesPlantedToday,
                     )
                     window.clearInterval(interval)
                 }, this.state.world.dayTimeAmount * 1000)
@@ -120,7 +121,10 @@ export class Game {
         })
     }
 
-        find('.span2-button').addEventListener('click', (event) => {})
+    // find('.span2-button').addEventListener('click', (event) => {})
+
+    applyAction(action) {
+        // this.state.world.actions
     }
 
     start() {
