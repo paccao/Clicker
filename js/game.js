@@ -1,5 +1,6 @@
 import { show, hide, find, getRandomItemFromArray } from './util'
 import { getRandomActions } from './action'
+import { TREES, CORRUPTION, TPC, TPD, HEALTH } from './constants'
 import {
     showMorning,
     showAfternoon,
@@ -31,14 +32,15 @@ export class Game {
         this.state = {
             player: {
                 name: '',
-                treesPerClick: 1,
+                [TPC]: 1,
+                [TPD]: 0,
                 treesPlantedToday: 0,
             },
             world: {
-                health: 2,
-                trees: 100,
-                deathRate: 0.7,
-                bioMass: 0,
+                [HEALTH]: 2,
+                [TREES]: 100,
+                [CORRUPTION]: 0.7, // trees that die off each day
+                bioMass: 0, // mass to build buildings and do research with
                 day: 1,
                 dayTimeAmount: getRandomItemFromArray([3, 6, 9, 12]),
                 actions: [],
@@ -75,22 +77,23 @@ export class Game {
              */
 
             if (this.state.player.treesPlantedToday === 0) {
-                let timeRemaining = this.state.world.dayTimeAmount * 1000
-                const interval = window.setInterval(() => {
-                    timeRemaining -= 100
-                    showRemainingTime(timeRemaining)
-                }, 100)
+                // let timeRemaining = this.state.world.dayTimeAmount * 1000
+                // const interval = window.setInterval(() => {
+                //     timeRemaining -= 100
+                //     showRemainingTime(timeRemaining)
+                // }, 100)
 
-                window.setTimeout(() => {
-                    this.afternoon()
-                    console.log(
-                        'total amount of trees: ' + this.state.world.trees,
-                        'trees planted today : ' +
-                            this.state.player.treesPlantedToday,
-                    )
-                    window.clearInterval(interval)
-                }, this.state.world.dayTimeAmount * 1000)
+                // window.setTimeout(() => {
+                //     this.afternoon()
+                //     console.log(
+                //         'total amount of trees: ' + this.state.world.trees,
+                //         'trees planted today : ' +
+                //             this.state.player.treesPlantedToday,
+                //     )
+                //     window.clearInterval(interval)
+                // }, this.state.world.dayTimeAmount * 1000)
 
+                this.afternoon()
                 hide('.step2')
                 hide('.step3')
                 //find('.plant-tree').innerText = ''
@@ -110,21 +113,36 @@ export class Game {
                 // Make sure we use the correct action based on button ID
                 const selectedActionID = btn.dataset.id
                 const selectedAction = this.state.world.actions.find(
-                    (action) => {
-                        if (action.id === Number(selectedActionID)) {
-                            return true
-                        }
-                        return false
-                    },
+                    (action) => action.id === Number(selectedActionID),
                 )
+                console.log(selectedAction)
+
+                this.applyAction(selectedAction)
+                this.evening()
             })
         })
     }
 
-    // find('.span2-button').addEventListener('click', (event) => {})
+    updateStats(modifiers = {}) {
+        Object.entries(modifiers).forEach(([stat, value]) => {
+            ;['player', 'world'].forEach((stats) => {
+                if (this.state[stats].hasOwnProperty(stat)) {
+                    this.state[stats][stat] += value
+                }
+            })
+        })
+    }
 
     applyAction(action) {
-        // this.state.world.actions
+        console.log('before', this.state)
+        console.log('action:', action.modifiers, action.upgradeCost)
+
+        // Apply modifiers to give player their new upgrades
+        this.updateStats(action.modifiers)
+        // Pay the price
+        this.updateStats(action.upgradeCost)
+
+        console.log('after', this.state)
     }
 
     start() {
@@ -141,5 +159,11 @@ export class Game {
     afternoon() {
         this.state.world.actions = getRandomActions(2)
         showAfternoon(this.state.world.actions)
+    }
+
+    evening() {
+        // TODO: hide afternoon
+        // TODO: show evening
+        // TODO: show stats
     }
 }

@@ -31,7 +31,7 @@ export const getRandomItemFromArray = (array) => {
  * Get a target DOM element
  *
  * @param {string | Element} target The DOM element to get
- * @returns {Element} element
+ * @returns {Element} elementpt
  */
 const getElement = (target) => {
     if (typeof target === 'string') {

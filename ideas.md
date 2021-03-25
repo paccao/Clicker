@@ -36,8 +36,15 @@ Humans have developed a tool called replicators which use biomass to make stuff.
 -   on show game, 'alert' player with a box element that fades out and says `welcome ${playerName}`
 
 -   highscore page
+
     -   Show a timeline of every decision the player made during the game
         -   you planted x amount of trees, y amount of trees died, z[] was your timeline for this game session
+
+-   Game balancing
+    -   Maybe make the scaling stat updates based on a mathematical function - like for example:
+        -   Bézier curves
+        -   De Casteljau's algorithm
+            -   https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm
 
 ## Todo
 
@@ -45,7 +52,7 @@ Humans have developed a tool called replicators which use biomass to make stuff.
 
 -   ✅plant tree
 -   ✅track planted trees
--   ✅update ui, show planted trees
+-   update ui, show planted trees
 
 ### Todo: game state
 
