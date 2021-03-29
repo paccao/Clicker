@@ -34,7 +34,7 @@ export function showMorning(dayTimeAmount) {
     ).innerText = `You got ${dayTimeAmount} seconds to click for the day`
 
     find('.morning .step3').innerText =
-        'Click the button to begin your day, get ready to click as much as you can!'
+        'Click the button to begin your day and get ready to click as much as you can!'
 
     // After click"phase" is over, type out something like "time's up"
     hide(UI.evening)

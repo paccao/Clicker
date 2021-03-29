@@ -1,5 +1,5 @@
 import { getRandomItemFromArray } from './util'
-import { TREES, CORRUPTION, TPC, TPD } from './constants'
+import { TREES, CORRUPTION, TPC, TPD, CORRUPTION_MODIFIERS } from './constants'
 
 // count here has to be the same amount as the span elements in the html file
 export const getRandomActions = (count = 2) => {
@@ -10,7 +10,15 @@ export const getRandomActions = (count = 2) => {
     return result
 }
 
-const action = (id, title, text, upgradeText, modifiers, upgradeCost) => {
+const action = (
+    id,
+    title,
+    text,
+    upgradeText,
+    modifiers,
+    upgradeCost,
+    applyActionCallback,
+) => {
     return {
         id,
         title,
@@ -18,7 +26,12 @@ const action = (id, title, text, upgradeText, modifiers, upgradeCost) => {
         upgradeText,
         modifiers,
         upgradeCost,
+        applyActionCallback,
     }
+}
+
+const getNextCorruptionLevel = (game) => {
+    game.state.world[CORRUPTION] = CORRUPTION_MODIFIERS.shift()
 }
 
 const actions = [
@@ -28,24 +41,22 @@ const actions = [
         'Make a science lab',
         "The science lab will help you do further research on the planet's soil. The research helps your trees become more resilient to the corrupt nature of earth.",
         "Earth's deadly corruption takes less of a toll on your trees each day",
-        {
-            [CORRUPTION]: -0.1,
-        },
+        {},
         {
             [TREES]: -10,
         },
+        getNextCorruptionLevel,
     ),
     action(
         2,
         'Bioengineered tree roots',
         "The ground starts moving, it seems as if the tree's roots has become sentient. They know what is best for their survival.",
         "Earth's deadly corruption takes less of a toll on your trees each day",
-        {
-            [CORRUPTION]: -0.1,
-        },
+        {},
         {
             [TREES]: -5,
         },
+        getNextCorruptionLevel,
     ),
     action(
         3,

@@ -1,6 +1,13 @@
 import { show, hide, find, getRandomItemFromArray } from './util'
 import { getRandomActions } from './action'
-import { TREES, CORRUPTION, TPC, TPD, HEALTH } from './constants'
+import {
+    TREES,
+    CORRUPTION,
+    TPC,
+    TPD,
+    HEALTH,
+    CORRUPTION_MODIFIERS,
+} from './constants'
 import {
     showMorning,
     showAfternoon,
@@ -68,6 +75,7 @@ export class Game {
             show('.step2')
             show('.step3')
             show('.plant-tree')
+            find('.plant-tree').innerText = 'Begin!'
         })
 
         find('.plant-tree').addEventListener('click', (event) => {
@@ -77,6 +85,8 @@ export class Game {
              */
 
             if (this.state.player.treesPlantedToday === 0) {
+                // find('.plant-tree').innerText = 'Plant tree 🌲'
+
                 // let timeRemaining = this.state.world.dayTimeAmount * 1000
                 // const interval = window.setInterval(() => {
                 //     timeRemaining -= 100
@@ -115,7 +125,6 @@ export class Game {
                 const selectedAction = this.state.world.actions.find(
                     (action) => action.id === Number(selectedActionID),
                 )
-                console.log(selectedAction)
 
                 this.applyAction(selectedAction)
                 this.evening()
@@ -134,13 +143,20 @@ export class Game {
     }
 
     applyAction(action) {
+        // ! NOTE: console.log() may not happen exactly at this point.
+        // ! This can cause state updates to change before anything is logged to console
         console.log('before', this.state)
         console.log('action:', action.modifiers, action.upgradeCost)
 
         // Apply modifiers to give player their new upgrades
         this.updateStats(action.modifiers)
+
         // Pay the price
         this.updateStats(action.upgradeCost)
+
+        if (typeof action.applyActionCallback === 'function') {
+            action.applyActionCallback(this)
+        }
 
         console.log('after', this.state)
     }
