@@ -1,85 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Clicker</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
 
-    <body>
-        <div id="start-page">
-            <img
-                class="intro-image"
-                src="https://picsum.photos/200?grayscale"
-            />
-            <h1>SURVIVAL HORROR, year unknown</h1>
-            <p>
-                The world isn't as it once was. It turns out life isn't all
-                rainbows and sunshines. All life on the surface of the earth has
-                died out. Humans had to take the measures needed to survive and
-                are now POST-HUMAN, a state beyond what we know as "human", made
-                possible through genetic manipulation and other
-                biointerventionist measures. People lived underground for
-                decades. Now the few survivors that pushed through has to
-                rebuild what was once a lush and beautiful planet.
-            </p>
-            <form>
-                <label for="player-name">Enter your name:</label>
-                <input
-                    type="text"
-                    id="player-name"
-                    name="player-name"
-                    minlength="1"
-                    maxlength="20"
-                    autofocus
-                />
-                <button class="start-button">BEGIN</button>
-            </form>
-        </div>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+</head>
 
-        <main id="game" class="hide">
-            <div class="day-page">
-                <header>
-                    <h2>
-                        Day <span class="day"></span> -
-                        <span class="time"></span>
-                    </h2>
-                </header>
-                <section class="morning hide">
-                    <p class="step1"></p>
-                    <button class="RNG-seconds">Get time</button>
-                    <p class="step2 hide"></p>
-                    <p class="step3 hide"></p>
-                    <p class="time-remaining"></p>
-                    <button class="plant-tree hide">Begin!</button>
-                    <!-- <img src="" alt="morning-logo"> -->
-                </section>
-                <section class="afternoon hide">
-                    <p>Take action!</p>
-                    <div id="actions">
-                        <span>
-                            <p class="span1-title"></p>
-                            <p class="span1-text"></p>
-                            <p class="span1-upgradeText"></p>
-                            <button class="span1-button"></button>
-                        </span>
-                        <span>
-                            <p class="span2-title"></p>
-                            <p class="span2-text"></p>
-                            <p class="span2-upgradeText"></p>
-                            <button class="span2-button"></button>
-                        </span>
-                    </div>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+</body>
 
-                    <!-- <img src="" alt="afternoon-logo"> -->
-                </section>
-                <section class="evening hide">
-                    <!-- <img src="" alt="evening-logo"> -->
-                </section>
-            </div>
-        </main>
-
-        <script type="module" src="./js/main.js"></script>
-    </body>
 </html>
