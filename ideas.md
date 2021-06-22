@@ -41,10 +41,13 @@ Humans have developed a tool called replicators which use biomass to make stuff.
         -   you planted x amount of trees, y amount of trees died, z[] was your timeline for this game session
 
 -   Game balancing
+
     -   Maybe make the scaling stat updates based on a mathematical function - like for example:
         -   Bézier curves
         -   De Casteljau's algorithm
             -   https://en.wikipedia.org/wiki/De_Casteljau%27s_algorithm
+
+-   A Villager is displayed on the screen when purchasing upgrades.
 
 ## Todo
 
