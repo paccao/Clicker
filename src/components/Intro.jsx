@@ -3,6 +3,8 @@ import { Heading, Img, Input, Text, Grid } from '@chakra-ui/react'
 
 import { GameContext } from '../GameContext'
 
+import introImg from '../images/631-1000x350-grayscale.jpg'
+
 const Intro = () => {
     const { player, setPlayerName } = useContext(GameContext)
 
@@ -16,7 +18,7 @@ const Intro = () => {
     return (
         <Grid gap="4" justifyItems="center" pt="8">
             <Img
-                src="https://picsum.photos/1000/350?grayscale"
+                src={introImg}
                 width="1000"
                 height="350"
             />
