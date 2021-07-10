@@ -30,8 +30,17 @@ export const GameProvider = (props) => {
         actions: [],
     })
 
+    function setPlayerName(name) {
+        setPlayer((prevPlayer) => ({
+            ...prevPlayer,
+            name
+        }))
+    }
+
+    console.log(player.name)
+
     return (
-        <GameContext.Provider value={{ player, world }}>
+        <GameContext.Provider value={{ player, world, setPlayerName }}>
             {props.children}
         </GameContext.Provider>
     )
