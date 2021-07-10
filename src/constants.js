@@ -4,6 +4,9 @@ export const CORRUPTION = 'corruption'
 export const HEALTH = 'health'
 export const TPC = 'treesPerClick'
 export const TPD = 'treesPerDay'
+export const MORNING = 'morning'
+export const AFTERNOON = 'afternoon'
+export const EVENING = 'evening'
 
 export const CORRUPTION_MODIFIERS = [
     0.625,

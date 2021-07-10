@@ -7,6 +7,7 @@ import {
     TPD,
     HEALTH,
     CORRUPTION_MODIFIERS,
+    MORNING
 } from './constants'
 import { getRandomItemFromArray } from './util'
 
@@ -28,6 +29,7 @@ export const GameProvider = (props) => {
         day: 1,
         morningDurationInSeconds: getRandomItemFromArray([3, 6, 9, 12]),
         actions: [],
+        timeOfDay: MORNING
     })
 
     function setPlayerName(name) {
@@ -37,10 +39,15 @@ export const GameProvider = (props) => {
         }))
     }
 
-    console.log(player.name)
+    function setTimeOfDay(timeOfDay) {
+        setWorld((prevWorld) => ({
+            ...prevWorld,
+            timeOfDay
+        }))
+    }
 
     return (
-        <GameContext.Provider value={{ player, world, setPlayerName }}>
+        <GameContext.Provider value={{ player, world, setPlayerName, setTimeOfDay }}>
             {props.children}
         </GameContext.Provider>
     )
