@@ -18,7 +18,7 @@ export const GameProvider = (props) => {
     const [treesPerClick, setTreesPerClick] = useState(1) // Active income per click
     const [treesPerSecond, setTreesPerSecond] = useState(0) // Passive income
     const [treesPlantedToday, setTreesPlantedToday] = useState(0) // daily total from clicks
-    const [treesGainedToday, setTreesGainedToday] = useState(0) // daily total from passive income
+    const [treeIncomeToday, setTreeIncomeToday] = useState(0) // daily total from passive income
 
     // -------------- Game World state --------------
     const [health, setHealth] = useState(2)
@@ -29,31 +29,6 @@ export const GameProvider = (props) => {
     const [morningDuration, setMorningDuration] = useState(0) // seconds
     const [actions, setActions] = useState([])
     const [timeOfDay, setTimeOfDay] = useState(MORNING)
-
-    // function plantTrees() {
-    //     setTreesPlantedToday(treesPlantedToday + treesPerClick)
-    //     console.log(treesPlantedToday)
-    // }
-
-    // function getTreeIncome() {
-    //     setTreesGainedToday(treesGainedToday + treesPerSecond)
-    //     console.log(treesGainedToday)
-    // }
-
-    // function endMorning() {
-    //     // TODO: add treesPlantedToday to total trees
-    //     // TODO: add treesGainedToday to total trees
-    //     // TODO: calculate corruption and remove trees based on it
-    //     // TODO: Reset treesPlantedToday, treesGainedToday and morningDuration, all to 0
-    //     // TODO: At the end, setTimeOfDay to show the AFTERNOON state.
-
-    //     console.log(
-    //         'planted + gained = ',
-    //         treesPlantedToday,
-    //         treesGainedToday,
-    //         treesPlantedToday + treesGainedToday,
-    //     )
-    // }
 
     return (
         <GameContext.Provider
@@ -82,9 +57,8 @@ export const GameProvider = (props) => {
                 setActions,
                 timeOfDay,
                 setTimeOfDay,
-                // plantTrees,
-                // getTreeIncome,
-                // endMorning,
+                treeIncomeToday,
+                setTreeIncomeToday,
             }}
         >
             {props.children}

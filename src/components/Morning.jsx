@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Heading, Button } from '@chakra-ui/react'
 
 import { GameContext } from '../GameContext'
 import { getRandomItemFromArray } from '../util'
+import { AFTERNOON } from '../constants'
 
 const Morning = () => {
     const {
@@ -10,15 +11,15 @@ const Morning = () => {
         morningDuration,
         treesPerSecond,
         day,
-        // plantTrees,
-        // endMorning,
-        // getTreeIncome,
+        setTimeOfDay,
         treesPlantedToday,
         setTreesPlantedToday,
-        setTreesGainedToday,
-        treesGainedToday,
+        setTreeIncomeToday,
         treesPerClick,
+        setTrees,
     } = useContext(GameContext)
+
+    const [isEndOfMorning, setIsEndOfMorning] = useState(false)
 
     function plantTrees() {
         setTreesPlantedToday((prevTreesPlantedToday) => {
@@ -28,31 +29,63 @@ const Morning = () => {
     }
 
     function getTreeIncome() {
-        setTreesGainedToday(
-            (prevTreesGainedToday) => prevTreesGainedToday + treesPerSecond,
+        setTreeIncomeToday(
+            (prevTreeIncomeToday) => prevTreeIncomeToday + treesPerSecond,
         )
     }
 
     function endMorning() {
-        // TODO: add treesPlantedToday to total trees
-        // TODO: add treesGainedToday to total trees
         // TODO: calculate corruption and remove trees based on it
-        // TODO: Reset treesPlantedToday, treesGainedToday and morningDuration, all to 0
-        // TODO: At the end, setTimeOfDay to show the AFTERNOON state.
 
-        console.log(
-            'planted + gained =',
-            treesPlantedToday,
-            treesGainedToday,
-            treesPlantedToday + treesGainedToday,
-        )
+        // TODO: Reset treesPlantedToday, treeIncomeToday and morningDuration, all to 0
+
+        setIsEndOfMorning(true)
     }
+
+    function sleep(ms) {
+        return new Promise((resolve) => {
+            setTimeout(() => resolve(), ms)
+        })
+    }
+
+    useEffect(async () => {
+        // Handle end of morning
+        
+        if (isEndOfMorning) {
+            let finalTreesPlantedToday
+            let finalTreeIncomeToday
+
+            setTreesPlantedToday((prevTreesPlantedToday) => {
+                finalTreesPlantedToday = prevTreesPlantedToday
+                return 0
+            })
+            setTreeIncomeToday((treeIncomeToday) => {
+                finalTreeIncomeToday = treeIncomeToday
+                return 0
+            })
+
+            await sleep(60)
+
+            console.log(finalTreesPlantedToday, finalTreeIncomeToday)
+
+            let updatedTrees
+
+            setTrees((trees) => {
+                updatedTrees =
+                    trees + finalTreesPlantedToday + finalTreeIncomeToday
+                console.log(updatedTrees)
+                return updatedTrees
+            })
+
+            setTimeOfDay(AFTERNOON)
+        }
+    }, [isEndOfMorning])
 
     const getRandomTime = () => {
-        setMorningDuration(getRandomItemFromArray([3, 6, 9]))
+        setMorningDuration(getRandomItemFromArray([3, 6]))
     }
 
-    useEffect(() => {
+    function startTreeIncome() {
         const income =
             treesPerSecond > 0
                 ? setInterval(() => {
@@ -64,13 +97,11 @@ const Morning = () => {
             if (income) clearInterval(income)
             endMorning()
         }, morningDuration * 1000)
-
-        return {}
-    }, [])
+    }
 
     function handleClick() {
         if (treesPlantedToday === 0) {
-            startPlanting()
+            startTreeIncome()
         }
 
         plantTrees()
