@@ -7,47 +7,86 @@ import {
     TPD,
     HEALTH,
     CORRUPTION_MODIFIERS,
-    MORNING
+    MORNING,
 } from './constants'
-import { getRandomItemFromArray } from './util'
 
 export const GameContext = createContext()
 
 export const GameProvider = (props) => {
-    const [player, setPlayer] = useState({
-        name: '',
-        [TPC]: 1,
-        [TPD]: 0,
-        treesPlantedToday: 0,
-    })
+    // ------------  Player state -------------
+    const [playerName, setPlayerName] = useState('')
+    const [treesPerClick, setTreesPerClick] = useState(1) // Active income per click
+    const [treesPerSecond, setTreesPerSecond] = useState(0) // Passive income
+    const [treesPlantedToday, setTreesPlantedToday] = useState(0) // daily total from clicks
+    const [treesGainedToday, setTreesGainedToday] = useState(0) // daily total from passive income
 
-    const [world, setWorld] = useState({
-        [HEALTH]: 2,
-        [TREES]: 100,
-        [CORRUPTION]: 0.7, // trees that die off each day
-        bioMass: 0, // mass to build buildings and do research with
-        day: 1,
-        morningDurationInSeconds: getRandomItemFromArray([3, 6, 9, 12]),
-        actions: [],
-        timeOfDay: MORNING
-    })
+    // -------------- Game World state --------------
+    const [health, setHealth] = useState(2)
+    const [trees, setTrees] = useState(100)
+    const [corruption, setCorruption] = useState(0.7) // trees that die off each day
+    const [bioMass, setBioMass] = useState(0) // mass to build buildings and do research with
+    const [day, setDay] = useState(1)
+    const [morningDuration, setMorningDuration] = useState(0) // seconds
+    const [actions, setActions] = useState([])
+    const [timeOfDay, setTimeOfDay] = useState(MORNING)
 
-    function setPlayerName(name) {
-        setPlayer((prevPlayer) => ({
-            ...prevPlayer,
-            name
-        }))
-    }
+    // function plantTrees() {
+    //     setTreesPlantedToday(treesPlantedToday + treesPerClick)
+    //     console.log(treesPlantedToday)
+    // }
 
-    function setTimeOfDay(timeOfDay) {
-        setWorld((prevWorld) => ({
-            ...prevWorld,
-            timeOfDay
-        }))
-    }
+    // function getTreeIncome() {
+    //     setTreesGainedToday(treesGainedToday + treesPerSecond)
+    //     console.log(treesGainedToday)
+    // }
+
+    // function endMorning() {
+    //     // TODO: add treesPlantedToday to total trees
+    //     // TODO: add treesGainedToday to total trees
+    //     // TODO: calculate corruption and remove trees based on it
+    //     // TODO: Reset treesPlantedToday, treesGainedToday and morningDuration, all to 0
+    //     // TODO: At the end, setTimeOfDay to show the AFTERNOON state.
+
+    //     console.log(
+    //         'planted + gained = ',
+    //         treesPlantedToday,
+    //         treesGainedToday,
+    //         treesPlantedToday + treesGainedToday,
+    //     )
+    // }
 
     return (
-        <GameContext.Provider value={{ player, world, setPlayerName, setTimeOfDay }}>
+        <GameContext.Provider
+            value={{
+                playerName,
+                setPlayerName,
+                treesPerClick,
+                setTreesPerClick,
+                treesPerSecond,
+                setTreesPerSecond,
+                treesPlantedToday,
+                setTreesPlantedToday,
+                health,
+                setHealth,
+                trees,
+                setTrees,
+                corruption,
+                setCorruption,
+                bioMass,
+                setBioMass,
+                day,
+                setDay,
+                morningDuration,
+                setMorningDuration,
+                actions,
+                setActions,
+                timeOfDay,
+                setTimeOfDay,
+                // plantTrees,
+                // getTreeIncome,
+                // endMorning,
+            }}
+        >
             {props.children}
         </GameContext.Provider>
     )

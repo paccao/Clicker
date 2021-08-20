@@ -1,8 +1,13 @@
 import React from 'react'
 
-const Afternoon = () => {
+import { Heading } from '@chakra-ui/react'
 
-   return 
+const Afternoon = () => {
+   return (
+      <Heading>
+         Afternoon
+      </Heading>
+   )
 }
 
 export default Afternoon

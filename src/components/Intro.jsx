@@ -6,7 +6,7 @@ import { GameContext } from '../GameContext'
 import introImg from '../images/631-1000x350-grayscale.jpg'
 
 const Intro = () => {
-    const { player, setPlayerName } = useContext(GameContext)
+    const { setPlayerName } = useContext(GameContext)
 
     const submitHandler = (e) => {
         e.preventDefault()

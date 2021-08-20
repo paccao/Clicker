@@ -8,21 +8,19 @@ import Evening from '../components/Evening'
 import Container from '../components/Container'
 import { MORNING, AFTERNOON, EVENING } from '../constants'
 
-const timeOfDayStates = {
-    [MORNING]: <Morning />,
-    [AFTERNOON]: <Afternoon />,
-    [EVENING]: <Evening />,
-}
 
 const Game = () => {
-    const { player, world } = useContext(GameContext)
-    
+    const { playerName, timeOfDay } = useContext(GameContext)
+
     return (
         <Container>
-            {!player.name
-                ? <Intro />
-                : timeOfDayStates[world.timeOfDay]
-            }
+            {!playerName ? <Intro /> : (
+                <>
+                    {timeOfDay === MORNING ? <Morning /> : null}
+                    {timeOfDay === AFTERNOON ? <Afternoon /> : null}
+                    {timeOfDay === EVENING ? <Evening /> : null}
+                </>
+            )}
         </Container>
     )
 }
