@@ -1,7 +1,14 @@
 <script lang="ts">
+    import { playerName } from '$lib/game/stores'
+    import Game from '$lib/components/Game.svelte'
+    import Intro from '$lib/components/Intro.svelte'
     import Layout from '$lib/components/Layout.svelte'
 </script>
 
 <Layout>
-    <a href="/about" sveltekit:prefetch>About</a>
+    {#if !$playerName}
+        <Intro />
+    {:else}
+        <Game />
+    {/if}
 </Layout>

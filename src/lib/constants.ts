@@ -1,5 +1,5 @@
 export const TimeOfDay = {
-    MORNING: 'morning',
-    AFTERNOON: 'afternoon',
-    EVENING: 'evening',
+    Morning: 'Morning',
+    Afternoon: 'Afternoon',
+    Evening: 'Evening',
 }
