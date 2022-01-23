@@ -1,12 +1,12 @@
 import React from 'react'
 import { Container, Heading, VStack, Button, Divider } from '@chakra-ui/react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const MainMenu = () => {
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const startGame = () => {
-        history.push('/game')
+        navigate('/game')
     }
 
     return (

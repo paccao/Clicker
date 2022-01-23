@@ -1,18 +1,14 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import Game from './Game'
 import MainMenu from './MainMenu'
 
-const Routes = () => (
-    <Switch>
-        <Route path="/game">
-            <Game />
-        </Route>
-        <Route path="/">
-            <MainMenu />
-        </Route>
-    </Switch>
+const AppRoutes = () => (
+    <Routes>
+        <Route index element={<MainMenu />} />
+        <Route path="/game" element={<Game />} />
+    </Routes>
 )
 
-export default Routes
+export default AppRoutes
